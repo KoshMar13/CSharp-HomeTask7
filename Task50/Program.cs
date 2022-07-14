@@ -37,5 +37,20 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
+string MatrixSearch(int[,] matrix, int num1, int num2)
+{
+    int rows = matrix.GetLength(0);
+    int columns = matrix.GetLength(1);
+    if (num1 < rows && num2 < columns)
+        return Convert.ToString(matrix[num1, num2]);
+    else
+        return "такого числа в массиве нет";
+}
+
 int[,] initMatrix = NewMatrixRnd(3, 4, -100, 100);
 PrintMatrix(initMatrix);
+Console.Write("Insert row: ");
+int r = Convert.ToInt32(Console.ReadLine());
+Console.Write("Insert column: ");
+int c = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(MatrixSearch(initMatrix, r, c));
