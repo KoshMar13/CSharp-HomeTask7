@@ -13,7 +13,7 @@ double[,] NewMatrixRnd(int row, int column, int min, int max)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = Math.Round(rnd.NextDouble() * ((max - min) + min), 4);
+            matrix[i, j] = Math.Round(rnd.NextDouble() * rnd.Next(min, max + 1), 4); //rnd.NextDouble выдаёт число от 0,0 до 1,0
         }
     }
     return matrix;

@@ -37,4 +37,39 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-PrintMatrix(NewMatrixRnd(3, 4, -100, 100));
+void PrintArray(double[] array)
+{
+    int len = array.Length;
+    for (int i = 0; i < len; i++)
+    {
+        if (i == 0)
+            Console.Write("[");
+        if (i < len - 1)
+            Console.Write(array[i] + "; ");
+        else
+            Console.Write(array[i] + "]");
+    }
+}
+
+double[] MidSumColumnsMatrix(int[,] matrix)
+{
+    int columns = matrix.GetLength(1);
+    double[] midSumColumns = new double[columns];
+    int rows = matrix.GetLength(0);
+    for (int j = 0; j < columns; j++)
+    {
+        double midSum = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            midSum += matrix[i, j];
+        }
+        midSumColumns[j] = midSum / rows;
+    }
+    return midSumColumns;
+}
+
+int[,] initMatrix = NewMatrixRnd(4, 4, -100, 100);
+PrintMatrix(initMatrix);
+Console.WriteLine("Среднее арифметическое элементов в каждом столбце равняется:");
+double[] answer = MidSumColumnsMatrix(initMatrix);
+PrintArray(answer);
